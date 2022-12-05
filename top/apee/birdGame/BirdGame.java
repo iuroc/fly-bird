@@ -1,9 +1,10 @@
 package top.apee.birdGame;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.imageio.*;
 import javax.swing.*;
 
 /**
@@ -46,6 +47,7 @@ class Body extends JPanel {
     public Body() {
         this.status = START;
         this.ground = new Ground();
+        this.addMouseListener(new Click(this));
     }
 
     /**
@@ -68,10 +70,13 @@ class Body extends JPanel {
         BufferedImage image = loadImage("image/bg.png");
         g.drawImage(image, 0, 0, null);
         g.drawImage(this.ground.image, this.ground.x, this.ground.y, null);
+        BufferedImage imageStart = loadImage("image/start.png");
         if (this.status == START) {
-            BufferedImage imageStart = loadImage("image/start.png");
             g.drawImage(imageStart, 0, 0, null);
+        } else if (this.status == RUNNING) {
+            imageStart = null;
         }
+        repaint();
     }
 
     /**
@@ -123,4 +128,39 @@ class Ground {
             this.x = 0;
         }
     }
+}
+
+class Click implements MouseListener {
+
+    Body body;
+
+    public Click(Body body) {
+        this.body = body;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        this.body.status = this.body.RUNNING;
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
 }
