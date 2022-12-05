@@ -76,7 +76,6 @@ class Body extends JPanel {
         } else if (this.status == RUNNING) {
             imageStart = null;
         }
-        repaint();
     }
 
     /**
