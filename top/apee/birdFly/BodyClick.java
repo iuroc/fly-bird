@@ -25,7 +25,12 @@ public class BodyClick implements MouseListener {
             this.body.status = this.body.START;
         } else if (this.body.status == this.body.RUNNING) {
             // 游戏进行中，点击让小鸟往上飞
-            this.body.bird.y -= 60;
+            this.body.bird.topNum = 0;
+            if (this.body.bird.dir == -1 && this.body.bird.topNum == 20) {
+                this.body.bird.dir = 1;
+            } else {
+                this.body.bird.dir = -1;
+            }
         }
     }
 

@@ -38,7 +38,9 @@ public class Body extends JPanel {
     public Body() {
         // 创建地板
         this.ground = new Ground();
+        // 创建小鸟
         this.bird = new Bird();
+        // 增加事件监听器
         this.addMouseListener(new BodyClick(this));
     }
 
@@ -65,6 +67,10 @@ public class Body extends JPanel {
                 this.bird.changeIndex(this);
                 this.bird.image = Main.loadImage("image/" + this.bird.index + ".png");
                 overImage = null;
+                if (this.bird.dir == -1 && this.bird.topNum++ == 20) {
+                    this.bird.dir = 1;
+                    this.bird.topNum = 0;
+                }
                 break;
             case OVER:
                 startImage = null;
