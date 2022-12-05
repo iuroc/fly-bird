@@ -29,6 +29,7 @@ public class Main {
         frame.setVisible(true);
         // 设置窗口不可缩放大小
         frame.setResizable(false);
+        // 开始载入游戏系统，循环开始
         body.start();
     }
 

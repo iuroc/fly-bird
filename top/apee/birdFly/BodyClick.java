@@ -2,6 +2,9 @@ package top.apee.birdFly;
 
 import java.awt.event.*;
 
+/**
+ * 屏幕鼠标事件
+ */
 public class BodyClick implements MouseListener {
 
     Body body;
@@ -25,10 +28,13 @@ public class BodyClick implements MouseListener {
             this.body.status = this.body.START;
         } else if (this.body.status == this.body.RUNNING) {
             // 游戏进行中，点击让小鸟往上飞
+            // 将小鸟从上一次点击屏幕以来上移的单位数归0，将重新开始计算向上的数量
             this.body.bird.topNum = 0;
             if (this.body.bird.dir == -1 && this.body.bird.topNum == 20) {
+                // 判断到小鸟运动方向向上，并且小鸟已经向上移动了20，此时改变方向为向下
                 this.body.bird.dir = 1;
             } else {
+                // 小鸟在向下移动，或者小鸟还未完成向上移动20，此时直接让小鸟向上飞
                 this.body.bird.dir = -1;
             }
         }

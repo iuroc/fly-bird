@@ -51,34 +51,54 @@ public class Body extends JPanel {
         g.drawImage(Main.loadImage("image/bg.png"), 0, 0, null);
         // 载入地板图片
         g.drawImage(this.ground.image, this.ground.x, this.ground.y, null);
-        // 判断游戏状态
+        // 载入开始准备页面图片
         BufferedImage startImage = Main.loadImage("image/start.png");
+        // 载入游戏结束页面图片
         BufferedImage overImage = Main.loadImage("image/gameover.png");
+        // 判断游戏状态
         switch (this.status) {
             case START:
+                // 游戏准备页面，地板移动
                 this.ground.move();
+                // 小鸟隐藏
                 this.bird.image = null;
-                this.bird.y = 220;
+                // 游戏结束页面隐藏
                 overImage = null;
+                // 小鸟y轴位置还原
+                this.bird.y = 220;
+                // 运动方向还原为向下
+                this.bird.dir = 1;
                 break;
             case RUNNING:
+                // 游戏进行中，地板移动
                 this.ground.move();
+                // 开始准备页面隐藏
                 startImage = null;
+                // 修改小鸟形态
                 this.bird.changeIndex(this);
                 this.bird.image = Main.loadImage("image/" + this.bird.index + ".png");
+                // 游戏结束页面隐藏
                 overImage = null;
+                // 如果小鸟正在向上，并且从点击屏幕以来，向上已经移动了20个单位，此时开始回落
                 if (this.bird.dir == -1 && this.bird.topNum++ == 20) {
+                    // 方向变为向下
                     this.bird.dir = 1;
+                    // 已经上移单位数归0
                     this.bird.topNum = 0;
                 }
                 break;
             case OVER:
+                // 开始准备页面隐藏
                 startImage = null;
+                // 小鸟隐藏
                 this.bird.image = null;
                 break;
         }
+        // 绘制开始准备页面
         g.drawImage(startImage, 0, 0, null);
+        // 绘制游戏结束页面
         g.drawImage(overImage, 0, 0, null);
+        // 绘制小鸟
         g.drawImage(this.bird.image, this.bird.x, this.bird.y, null);
     }
 
@@ -87,7 +107,9 @@ public class Body extends JPanel {
      */
     public void start() {
         while (true) {
+            // 重新绘制页面
             repaint();
+            // 暂停15毫秒，该值越小，难度越高
             try {
                 Thread.sleep(16);
             } catch (InterruptedException e) {

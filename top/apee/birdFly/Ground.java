@@ -16,8 +16,11 @@ public class Ground {
     BufferedImage image;
 
     public Ground() {
+        // 地板x轴位置
         this.x = 0;
+        // 地板y轴位置
         this.y = 498;
+        // 载入地板图片对象
         this.image = Main.loadImage("image/ground.png");
     }
 
@@ -25,7 +28,9 @@ public class Ground {
      * 移动地板
      */
     public void move() {
+        // 地板左移
         this.x--;
+        // 如果地板左移了110，回到原点重新移动
         if (this.x == -110) {
             this.x = 0;
         }
