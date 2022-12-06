@@ -19,14 +19,14 @@ public class Column {
 
     public Column(Body body) {
         this.body = body;
-        // y轴位置，-250, -450
+        // y 轴位置, -250, -450
         this.setY();
         // 显示图片
         this.showImage();
     }
 
     /**
-     * 设置y的随机值
+     * 设置 y 的随机值, [-250, -450]
      */
     public void setY() {
         this.y = new Random().nextInt(201) - 450;
@@ -51,20 +51,32 @@ public class Column {
      */
     public void move(Bird bird) {
         this.x--;
+        // 柱子超出屏幕左边 100 像素
         if (this.x == -100) {
+            // 将柱子移动到 x = 650 位置, 实现柱子的无限生成
             this.x = 650;
+            // 设置新生成的柱子的 y 轴位置
             this.setY();
         }
-        // 判断是否进入管道
-        // 柱子的x属于区间 [120-柱宽70, 120+鸟宽56]
+        // 柱子高度组成: 525 + 150 + 525
+        // 柱子宽度: 70
+        // 小鸟宽高: 56 x 48
+        // 判断小鸟进入管道, 此时柱子的 x 属于区间 [120-柱宽70, 120+鸟宽56]
+        // 小鸟刚进入之后 && 小鸟刚离开之前
         if (this.x < 120 + 56 && this.x > 120 - 70) {
-            // 柱子高度组成：525 + 150 + 525
-            if (this.y + 525 > bird.y || bird.y > this.y + 525 + 150 - 48) {
+            // 缺口上边缘 y 值
+            int entTop = this.y + 525;
+            // 小鸟处于缺口最底部时, 小鸟上边缘 y 值
+            int birdTopMin = this.y + 525 + 150 - 48;
+            // 小鸟撞上了缺口上边缘 && 小鸟撞上了缺口下边缘
+            if (bird.y < entTop || bird.y > birdTopMin) {
+                // 游戏结束
                 this.body.status = this.body.OVER;
             }
         }
-        // 小鸟经过了柱子
+        // 小鸟刚好离开柱子
         if (this.x == 120 - 70) {
+            // 分数增加
             this.body.score++;
         }
     }

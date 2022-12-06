@@ -8,7 +8,7 @@ public class Bird {
      */
     int x, y;
     /**
-     * 方向，-1上，1下
+     * 方向, -1 上, 1 下
      */
     int dir;
     /**
@@ -16,11 +16,11 @@ public class Bird {
      */
     int index;
     /**
-     * 小鸟振翅速度，即每经过多少单位更换小鸟形态图片，数值越大，振翅越慢
+     * 小鸟振翅速度, 即每经过多少单位更换小鸟形态图片, 数值越大, 振翅越慢
      */
     int changeSpeed;
     /**
-     * 临时数字，用于辅助实现小鸟振翅速度
+     * 临时数字, 用于辅助实现小鸟振翅速度
      */
     int temp;
     /**
@@ -38,18 +38,18 @@ public class Bird {
      */
     int pxPerMum;
     /**
-     * 小鸟图片对象，56x48
+     * 小鸟图片对象, 56x48
      */
     BufferedImage image;
 
     public Bird() {
-        // 小鸟x轴位置
+        // 小鸟 x 轴位置
         this.x = 120;
-        // 小鸟y轴位置
+        // 小鸟 y 轴位置
         this.y = 220;
         // 小鸟向下运动
         this.dir = 1;
-        // 点击屏幕后，已经向上运动的单位数，超过某个固定值回落
+        // 点击屏幕后, 已经向上运动的单位数, 超过某个固定值回落
         this.topNum = 0;
         // 每单位像素数量
         this.pxPerMum = 3;
@@ -71,7 +71,7 @@ public class Bird {
         this.temp++;
         if (this.temp % this.changeSpeed == 0) {
             this.index++;
-            // 如果序号达到8，回0重新开始
+            // 如果序号达到 8, 回 0 重新开始
             if (this.index == 8) {
                 this.index = 0;
             }
@@ -80,14 +80,14 @@ public class Bird {
     }
 
     /**
-     * 小鸟移动（上/下）
+     * 小鸟上下移动
      * 
      * @param body
      */
     public void move(Body body) {
-        // 小鸟向上移动1单位，每单位pxPerMum像素
+        // 小鸟向上移动 1 单位, 每单位 pxPerMum 像素
         this.y += this.pxPerMum * this.dir;
-        // 判断掉地上了，或者头顶出去了，游戏结束
+        // 判断掉地上了, 或者头顶出去了, 游戏结束
         if (this.y > 460 || this.y < 0) {
             body.status = body.OVER;
         }

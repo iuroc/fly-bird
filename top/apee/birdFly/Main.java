@@ -30,9 +30,9 @@ public class Main {
         frame.setVisible(true);
         // 设置窗口不可缩放大小
         frame.setResizable(false);
+        // 增加键盘事件, 用于通过空格键操作游戏
         frame.addKeyListener(new BodyKey(body));
-
-        // 开始载入游戏系统，循环开始
+        // 开始载入游戏系统, 循环开始
         body.start();
     }
 

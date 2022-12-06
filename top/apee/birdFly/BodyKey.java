@@ -16,7 +16,9 @@ public class BodyKey implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        // 判断空格键
         if (e.getKeyCode() == 32) {
+            // 调用 MyEvent 中的 click 方法
             new MyEvent().click(this.body);
         }
     }
