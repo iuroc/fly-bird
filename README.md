@@ -2,6 +2,8 @@
 
 > 像素鸟
 
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=oyps&theme=light&layout=compact)
+
 ## 项目信息
 
 - 作者：欧阳鹏
