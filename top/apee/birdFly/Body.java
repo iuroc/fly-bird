@@ -19,6 +19,10 @@ public class Body extends JPanel {
      */
     public Bird bird;
     /**
+     * 柱子
+     */
+    public Column column1, column2;
+    /**
      * 游戏状态
      */
     public int status;
@@ -40,6 +44,9 @@ public class Body extends JPanel {
         this.ground = new Ground();
         // 创建小鸟
         this.bird = new Bird();
+        // 创建柱子
+        this.column1 = new Column();
+        this.column2 = new Column();
         // 增加事件监听器
         this.addMouseListener(new BodyClick(this));
     }
@@ -49,12 +56,12 @@ public class Body extends JPanel {
         super.paint(g);
         // 载入背景图片
         g.drawImage(Main.loadImage("image/bg.png"), 0, 0, null);
-        // 载入地板图片
-        g.drawImage(this.ground.image, this.ground.x, this.ground.y, null);
+
         // 载入开始准备页面图片
         BufferedImage startImage = Main.loadImage("image/start.png");
         // 载入游戏结束页面图片
         BufferedImage overImage = Main.loadImage("image/gameover.png");
+
         // 判断游戏状态
         switch (this.status) {
             case START:
@@ -68,6 +75,8 @@ public class Body extends JPanel {
                 this.bird.y = 220;
                 // 运动方向还原为向下
                 this.bird.dir = 1;
+                this.column1.hideImage();
+                this.column2.hideImage();
                 break;
             case RUNNING:
                 // 游戏进行中，地板移动
@@ -87,20 +96,30 @@ public class Body extends JPanel {
                     // 已经上移单位数归0
                     this.bird.topNum = 0;
                 }
+                this.column1.showImage();
+                this.column2.showImage();
                 break;
             case OVER:
                 // 开始准备页面隐藏
                 startImage = null;
                 // 小鸟隐藏
                 this.bird.image = null;
+                this.column1.hideImage();
+                this.column2.hideImage();
                 break;
         }
+        // 绘制柱子1
+        g.drawImage(this.column1.image, this.column1.x, this.column1.y, null);
+        // 绘制柱子2
+        g.drawImage(this.column2.image, this.column2.x + 100, this.column2.y, null);
         // 绘制开始准备页面
         g.drawImage(startImage, 0, 0, null);
         // 绘制游戏结束页面
         g.drawImage(overImage, 0, 0, null);
         // 绘制小鸟
         g.drawImage(this.bird.image, this.bird.x, this.bird.y, null);
+        // 载入地板图片
+        g.drawImage(this.ground.image, this.ground.x, this.ground.y, null);
     }
 
     /**
@@ -112,7 +131,7 @@ public class Body extends JPanel {
             repaint();
             // 游戏整体速度，暂停15毫秒，该值越小，难度越高
             try {
-                Thread.sleep(15);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -52,9 +52,9 @@ public class Bird {
         // 点击屏幕后，已经向上运动的单位数，超过某个固定值回落
         this.topNum = 0;
         // 每单位像素数量
-        this.pxPerMum = 2;
+        this.pxPerMum = 3;
         // 向上的单位数
-        this.topAll = 20;
+        this.topAll = 10;
         // 小鸟振翅速度
         this.changeSpeed = 10;
         // 临时数字
@@ -80,14 +80,12 @@ public class Bird {
     }
 
     /**
-     * 小鸟移动
+     * 小鸟移动（上/下）
      * 
      * @param body
      */
     public void move(Body body) {
-        /**
-         * 小鸟每个移动单位为2像素，数值越大移动速度越快
-         */
+        // 小鸟向上移动1单位，每单位pxPerMum像素
         this.y += this.pxPerMum * this.dir;
         // 判断掉地上了，或者头顶出去了，游戏结束
         if (this.y > 460 || this.y < 0) {

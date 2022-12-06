@@ -12,11 +12,12 @@ import java.io.IOException;
  * @version 2.0
  */
 public class Main {
+
     public static void main(String[] args) {
         // 创建窗口
         JFrame frame = new JFrame("飞翔的小鸟");
         // 设置窗口尺寸
-        frame.setSize(446, 650);
+        frame.setSize(446, 600);
         // 设置窗口居中
         frame.setLocationRelativeTo(null);
         // 设置窗口关闭动作
@@ -29,6 +30,8 @@ public class Main {
         frame.setVisible(true);
         // 设置窗口不可缩放大小
         frame.setResizable(false);
+        frame.addKeyListener(new BodyKey(body));
+
         // 开始载入游戏系统，循环开始
         body.start();
     }
