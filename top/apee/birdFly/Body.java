@@ -45,9 +45,9 @@ public class Body extends JPanel {
         // 创建小鸟
         this.bird = new Bird();
         // 创建柱子
-        this.column1 = new Column(200, -350);
-        this.column2 = new Column(400, -450);
-        this.column3 = new Column(600, -550);
+        this.column1 = new Column(this);
+        this.column2 = new Column(this);
+        this.column3 = new Column(this);
         // 增加事件监听器
         this.addMouseListener(new BodyClick(this));
     }
@@ -80,6 +80,9 @@ public class Body extends JPanel {
                 this.column1.hideImage();
                 this.column2.hideImage();
                 this.column3.hideImage();
+                this.column1.x = 300;
+                this.column2.x = 550;
+                this.column3.x = 800;
                 break;
             case RUNNING:
                 // 游戏进行中，地板移动
@@ -103,9 +106,9 @@ public class Body extends JPanel {
                 this.column1.showImage();
                 this.column2.showImage();
                 this.column3.showImage();
-                this.column1.move();
-                this.column2.move();
-                this.column3.move();
+                this.column1.move(this.bird);
+                this.column2.move(this.bird);
+                this.column3.move(this.bird);
                 break;
             case OVER:
                 // 开始准备页面隐藏
