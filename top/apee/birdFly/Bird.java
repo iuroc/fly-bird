@@ -54,7 +54,7 @@ public class Bird {
         // 每单位像素数量
         this.pxPerMum = 3;
         // 向上的单位数
-        this.topAll = 10;
+        this.topAll = 12;
         // 小鸟振翅速度
         this.changeSpeed = 10;
         // 临时数字
