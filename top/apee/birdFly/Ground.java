@@ -4,6 +4,9 @@ import java.awt.image.*;
 
 /**
  * 地板
+ * 
+ * @author 欧阳鹏
+ * @version 1.0
  */
 public class Ground {
     /**

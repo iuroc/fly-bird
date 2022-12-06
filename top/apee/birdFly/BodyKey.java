@@ -2,6 +2,12 @@ package top.apee.birdFly;
 
 import java.awt.event.*;
 
+/**
+ * 键盘事件
+ * 
+ * @author 欧阳鹏
+ * @version 1.0
+ */
 public class BodyKey implements KeyListener {
 
     Body body;

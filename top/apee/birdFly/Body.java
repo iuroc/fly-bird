@@ -9,6 +9,7 @@ import java.awt.Font;
  * 游戏界面主体
  * 
  * @author 欧阳鹏
+ * @version 1.0
  */
 public class Body extends JPanel {
     /**

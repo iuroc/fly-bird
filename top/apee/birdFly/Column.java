@@ -5,6 +5,9 @@ import java.util.Random;
 
 /**
  * 柱子
+ * 
+ * @author 欧阳鹏
+ * @version 1.0
  */
 public class Column {
     /**

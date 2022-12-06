@@ -4,6 +4,9 @@ import java.awt.event.*;
 
 /**
  * 屏幕鼠标事件
+ * 
+ * @author 欧阳鹏
+ * @version 1.0
  */
 public class BodyClick implements MouseListener {
 

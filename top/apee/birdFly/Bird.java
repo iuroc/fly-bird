@@ -2,6 +2,12 @@ package top.apee.birdFly;
 
 import java.awt.image.*;
 
+/**
+ * 小鸟
+ * 
+ * @author 欧阳鹏
+ * @version 1.0
+ */
 public class Bird {
     /**
      * 小鸟位置
