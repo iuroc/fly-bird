@@ -30,7 +30,7 @@ public class BodyClick implements MouseListener {
             // 游戏进行中，点击让小鸟往上飞
             // 将小鸟从上一次点击屏幕以来上移的单位数归0，将重新开始计算向上的数量
             this.body.bird.topNum = 0;
-            if (this.body.bird.dir == -1 && this.body.bird.topNum == 20) {
+            if (this.body.bird.dir == -1 && this.body.bird.topNum == this.body.bird.topAll) {
                 // 判断到小鸟运动方向向上，并且小鸟已经向上移动了20，此时改变方向为向下
                 this.body.bird.dir = 1;
             } else {

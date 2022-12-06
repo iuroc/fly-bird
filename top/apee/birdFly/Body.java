@@ -60,8 +60,8 @@ public class Body extends JPanel {
             case START:
                 // 游戏准备页面，地板移动
                 this.ground.move();
-                // 小鸟隐藏
-                this.bird.image = null;
+                // 修改小鸟形态
+                this.bird.changeIndex(this);
                 // 游戏结束页面隐藏
                 overImage = null;
                 // 小鸟y轴位置还原
@@ -76,11 +76,12 @@ public class Body extends JPanel {
                 startImage = null;
                 // 修改小鸟形态
                 this.bird.changeIndex(this);
-                this.bird.image = Main.loadImage("image/" + this.bird.index + ".png");
+                // 小鸟摆动翅膀
+                this.bird.move(this);
                 // 游戏结束页面隐藏
                 overImage = null;
                 // 如果小鸟正在向上，并且从点击屏幕以来，向上已经移动了20个单位，此时开始回落
-                if (this.bird.dir == -1 && this.bird.topNum++ == 20) {
+                if (this.bird.dir == -1 && this.bird.topNum++ == this.bird.topAll) {
                     // 方向变为向下
                     this.bird.dir = 1;
                     // 已经上移单位数归0
@@ -109,9 +110,9 @@ public class Body extends JPanel {
         while (true) {
             // 重新绘制页面
             repaint();
-            // 暂停15毫秒，该值越小，难度越高
+            // 游戏整体速度，暂停15毫秒，该值越小，难度越高
             try {
-                Thread.sleep(16);
+                Thread.sleep(15);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
