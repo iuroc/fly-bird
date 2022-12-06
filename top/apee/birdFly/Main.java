@@ -29,7 +29,7 @@ public class Main {
         // 设置可视化
         frame.setVisible(true);
         // 设置窗口不可缩放大小
-        // frame.setResizable(false);
+        frame.setResizable(false);
         frame.addKeyListener(new BodyKey(body));
 
         // 开始载入游戏系统，循环开始
