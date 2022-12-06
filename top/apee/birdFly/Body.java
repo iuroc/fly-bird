@@ -3,6 +3,7 @@ package top.apee.birdFly;
 import java.awt.Graphics;
 import javax.swing.*;
 import java.awt.image.*;
+import java.awt.Font;
 
 /**
  * 游戏界面主体
@@ -39,6 +40,11 @@ public class Body extends JPanel {
      */
     public final int OVER = 2;
 
+    /**
+     * 得分
+     */
+    public int score;
+
     public Body() {
         // 创建地板
         this.ground = new Ground();
@@ -62,7 +68,7 @@ public class Body extends JPanel {
         BufferedImage startImage = Main.loadImage("image/start.png");
         // 载入游戏结束页面图片
         BufferedImage overImage = Main.loadImage("image/gameover.png");
-
+        String scoreText = "得分：" + this.score;
         // 判断游戏状态
         switch (this.status) {
             case START:
@@ -76,6 +82,9 @@ public class Body extends JPanel {
                 this.bird.y = 220;
                 // 运动方向还原为向下
                 this.bird.dir = 1;
+                // 得分清零
+                this.score = 0;
+                scoreText = "";
                 // 隐藏柱子
                 this.column1.hideImage();
                 this.column2.hideImage();
@@ -135,6 +144,8 @@ public class Body extends JPanel {
         g.drawImage(this.bird.image, this.bird.x, this.bird.y, null);
         // 载入地板图片
         g.drawImage(this.ground.image, this.ground.x, this.ground.y, null);
+        g.setFont(new Font("微软雅黑", Font.BOLD, 30));
+        g.drawString(scoreText, 10, 40);
     }
 
     /**

@@ -56,12 +56,16 @@ public class Column {
             this.setY();
         }
         // 判断是否进入管道
-        // 柱子的x属于区间 [120-柱宽78, 120+鸟宽56]
-        if (this.x < 120 + 56 && this.x > 120 - 78) {
-            // 柱子高度组成：530 + 150 + 530
-            if (this.y + 525 > bird.y || bird.y > this.y + 530 + 150 - 48) {
+        // 柱子的x属于区间 [120-柱宽70, 120+鸟宽56]
+        if (this.x < 120 + 56 && this.x > 120 - 70) {
+            // 柱子高度组成：525 + 150 + 525
+            if (this.y + 525 > bird.y || bird.y > this.y + 525 + 150 - 48) {
                 this.body.status = this.body.OVER;
             }
+        }
+        // 小鸟经过了柱子
+        if (this.x == 120 - 70) {
+            this.body.score++;
         }
     }
 }
