@@ -39,7 +39,7 @@ public class Column {
         /**
          * 柱子缺口高度
          */
-        public static final int NOTCHHEIGHT = 78;
+        public static final int NOTCHHEIGHT = 146;
     }
 
     GamePane gamePane;
@@ -50,8 +50,7 @@ public class Column {
      * @param gamePane 游戏主体
      * @param x        柱子初始x值
      */
-    public Column(GamePane gamePane, int x) {
-        this.x = x;
+    public Column(GamePane gamePane) {
         this.gamePane = gamePane;
     }
 
@@ -81,9 +80,20 @@ public class Column {
      */
     public void move() {
         this.x -= Ground.Config.MOVEPX;
+        // 柱子到达最左边，将柱子移动到最右边，形成新的柱子
         if (this.x <= Column.Config.MINX) {
             this.x = Column.Config.SPACING * 2 + Column.Config.MINX;
             this.changeY();
+        }
+        // 开始判断小鸟撞击柱子
+        // 判断小鸟进入柱子范围，头部已经进入 && 尾部没有离开
+        if (this.x <= Bird.Config.X + Bird.Config.WIDTH && this.x >= Bird.Config.X - Column.Config.WIDTH) {
+            // 判断小鸟撞上缺口上部或下部
+            if (this.gamePane.bird.y <= Column.Config.TOPHEIGHT + this.y
+                    || this.gamePane.bird.y >= Column.Config.TOPHEIGHT + this.y + Column.Config.NOTCHHEIGHT
+                            - Bird.Config.HEIGHT) {
+                this.gamePane.status = GamePane.Config.OVER;
+            }
         }
     }
 }

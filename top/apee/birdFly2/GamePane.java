@@ -52,12 +52,12 @@ public class GamePane extends JPanel {
     /**
      * 柱子1
      */
-    public Column column1 = new Column(this, Column.Config.FIRSTX);
+    public Column column1 = new Column(this);
     /**
      * 柱子2
      */
 
-    public Column column2 = new Column(this, Column.Config.FIRSTX + Column.Config.SPACING);
+    public Column column2 = new Column(this);
     /**
      * 游戏状态，开始、进行中、结束
      */
@@ -92,6 +92,9 @@ public class GamePane extends JPanel {
                 // 随机生成柱子缺口高度
                 this.column1.changeY();
                 this.column2.changeY();
+                // 设置柱子初始位置
+                this.column1.x = Column.Config.FIRSTX;
+                this.column2.x = Column.Config.FIRSTX + Column.Config.SPACING;
                 break;
             case GamePane.Config.RUNNING:
                 // 开始页面隐藏
@@ -130,14 +133,14 @@ public class GamePane extends JPanel {
         g.drawImage(this.column1.image, this.column1.x, this.column1.y, null);
         // 绘制柱子2
         g.drawImage(this.column2.image, this.column2.x, this.column2.y, null);
-        // 绘制开始页面
-        g.drawImage(this.startImage.image, 0, 0, null);
-        // 绘制结束页面
-        g.drawImage(this.overPage.image, 0, 0, null);
         // 绘制地面
         g.drawImage(this.ground.image, this.ground.x, this.ground.y, null);
         // 绘制小鸟
         g.drawImage(this.bird.image, this.bird.x, this.bird.y, null);
+        // 绘制开始页面
+        g.drawImage(this.startImage.image, 0, 0, null);
+        // 绘制结束页面
+        g.drawImage(this.overPage.image, 0, 0, null);
     }
 
     /**
