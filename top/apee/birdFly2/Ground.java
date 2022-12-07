@@ -7,6 +7,20 @@ import java.awt.image.BufferedImage;
  */
 public class Ground {
     /**
+     * 配置类
+     */
+    public class Config {
+        /**
+         * 每个循环单位移动的像素
+         */
+        public static final int MOVEPX = 1;
+        /**
+         * 地面能够向左移动的极限位置，到达后地面将回到原点
+         */
+        public static final int MINX = -363;
+    }
+
+    /**
      * 地面位置
      */
     public int x = 0, y = 498;
@@ -20,20 +34,6 @@ public class Ground {
      * 临时图片，该图片用于赋值给image
      */
     public BufferedImage imageTemp = Tool.loadImage("image/ground.png");
-
-    /**
-     * 配置类
-     */
-    public class Config {
-        /**
-         * 每个循环单位移动的像素
-         */
-        public static final int MOVEPX = 1;
-        /**
-         * 地面能够向左移动的极限位置，到达后地面将回到原点
-         */
-        public static final int MINX = -363;
-    }
 
     public Ground() {
 
@@ -54,7 +54,6 @@ public class Ground {
      */
     public void show() {
         this.image = this.imageTemp;
-        this.move();
     }
 
     /**

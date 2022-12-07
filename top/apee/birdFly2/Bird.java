@@ -19,13 +19,17 @@ public class Bird {
          */
         public static final int MOVEPX = 3;
         /**
-         * 从每次点击屏幕开始，小鸟允许向上移动的距离，超过后小鸟回落
+         * 从每次点击屏幕开始，小鸟允许向上移动的循环单位数，超过后小鸟回落
          */
         public static final int TOPALL = 20;
         /**
          * 小鸟掉地时的y值
          */
-        public static final int BOTTOMY = 455;
+        public static final int BOTTOMY = 465;
+        /**
+         * 小鸟初始位置
+         */
+        public static final int X = 120, Y = 220;
     }
 
     /**
@@ -35,7 +39,7 @@ public class Bird {
     /**
      * 小鸟位置
      */
-    public int x = 120, y = 220;
+    public int x = Bird.Config.X, y = Bird.Config.Y;
     /**
      * 当前小鸟图片文件下标
      */
@@ -44,6 +48,10 @@ public class Bird {
      * 用于计数
      */
     public int number = 0;
+    /**
+     * 移动方向，上-1，下1
+     */
+    public int dir = 1;
     /**
      * 小鸟图片
      */
@@ -94,7 +102,10 @@ public class Bird {
      * 移动小鸟
      */
     public void move() {
-        this.y += Bird.Config.MOVEPX;
+        this.y += Bird.Config.MOVEPX * this.dir;
+        if (this.dir == -1) {
+            this.topNum++;
+        }
         // 判断落地
         if (this.y >= Bird.Config.BOTTOMY) {
             this.pane.status = GamePane.Config.OVER;
