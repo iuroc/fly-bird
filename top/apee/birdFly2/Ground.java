@@ -11,7 +11,7 @@ public class Ground {
      */
     public class Config {
         /**
-         * 每个循环单位移动的像素
+         * 每个循环单位移动的像素，该值同时对地面和柱子起作用
          */
         public static final int MOVEPX = 1;
         /**
@@ -44,6 +44,7 @@ public class Ground {
      */
     public void move() {
         this.x -= Ground.Config.MOVEPX;
+        // 地面移动到最左边，回到原点
         if (x <= Ground.Config.MINX) {
             this.x = 0;
         }

@@ -15,6 +15,21 @@ public class Column {
     BufferedImage image;
     BufferedImage imageTemp = Tool.loadImage("image/column.png");
 
+    public class Config {
+        /**
+         * 柱子能够向左移动的极限位置，到达后柱子将移动到最右边，形成新的柱子
+         */
+        public static final int MINX = -100;
+        /**
+         * 第一根柱子的x值
+         */
+        public static final int FIRSTX = 400;
+        /**
+         * 柱子的间距
+         */
+        public static final int SPACING = 300;
+    }
+
     public Column(int x) {
         this.x = x;
     }
@@ -45,8 +60,9 @@ public class Column {
      */
     public void move() {
         this.x -= Ground.Config.MOVEPX;
-        if (this.x <= -100) {
-            this.x = 500;
+        if (this.x <= Column.Config.MINX) {
+            this.x = Column.Config.SPACING * 2 + Column.Config.MINX;
+            this.changeY();
         }
     }
 }

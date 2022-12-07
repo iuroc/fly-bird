@@ -52,12 +52,12 @@ public class GamePane extends JPanel {
     /**
      * 柱子1
      */
-    public Column column1 = new Column(400);
+    public Column column1 = new Column(Column.Config.FIRSTX);
     /**
      * 柱子2
      */
 
-    public Column column2 = new Column(700);
+    public Column column2 = new Column(Column.Config.FIRSTX + Column.Config.SPACING);
     /**
      * 游戏状态，开始、进行中、结束
      */
