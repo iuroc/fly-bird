@@ -13,15 +13,19 @@ public class Bird {
         /**
          * 小鸟尺寸
          */
-        public static int width = 51, height = 48;
+        public static final int width = 51, height = 48;
         /**
          * 每个循环单位移动的像素
          */
-        public static int movePx = 3;
+        public static final int movePx = 3;
         /**
          * 从每次点击屏幕开始，小鸟允许向上移动的距离，超过后小鸟回落
          */
-        public static int topAll = 20;
+        public static final int topAll = 20;
+        /**
+         * 小鸟掉地时的y值
+         */
+        public static final int bottomY = 455;
     }
 
     /**
@@ -92,7 +96,7 @@ public class Bird {
     public void move() {
         this.y += Bird.Config.movePx;
         // 判断落地
-        if (this.y >= 455) {
+        if (this.y >= Bird.Config.bottomY) {
             this.pane.status = GamePane.Config.OVER;
         }
     }
