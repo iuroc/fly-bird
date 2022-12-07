@@ -38,7 +38,7 @@ public class GamePane extends JPanel {
     /**
      * 小鸟
      */
-    public Bird bird = new Bird();
+    public Bird bird = new Bird(this);
 
     /**
      * 游戏状态，开始、进行中、结束
@@ -46,6 +46,7 @@ public class GamePane extends JPanel {
     public int status = 0;
 
     public GamePane() {
+        // bird = new Bird(this);
     }
 
     @Override

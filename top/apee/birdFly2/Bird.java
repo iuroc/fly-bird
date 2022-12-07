@@ -48,9 +48,11 @@ public class Bird {
      * 临时图片，该图片用于赋值给image
      */
     public BufferedImage[] imageTemp = new BufferedImage[8];
+    GamePane pane;
 
-    public Bird() {
+    public Bird(GamePane pane) {
         this.loadImages();
+        this.pane = pane;
     }
 
     /**
@@ -89,5 +91,9 @@ public class Bird {
      */
     public void move() {
         this.y += Bird.Config.movePx;
+        // 判断落地
+        if (this.y >= 455) {
+            this.pane.status = GamePane.Config.OVER;
+        }
     }
 }
