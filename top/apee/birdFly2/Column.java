@@ -86,12 +86,19 @@ public class Column {
             this.changeY();
         }
         // 开始判断小鸟撞击柱子
-        // 判断小鸟进入柱子范围，头部已经进入 && 尾部没有离开
-        if (this.x <= Bird.Config.X + Bird.Config.WIDTH && this.x >= Bird.Config.X - Column.Config.WIDTH) {
+        // 判断小鸟进入柱子范围
+        // 头部已经进入
+        boolean headIn = this.x <= Bird.Config.X + Bird.Config.WIDTH;
+        // 尾部没有离开
+        boolean tailOut = this.x >= Bird.Config.X - Column.Config.WIDTH;
+        if (headIn && tailOut) {
             // 判断小鸟撞上缺口上部或下部
-            if (this.gamePane.bird.y <= Column.Config.TOPHEIGHT + this.y
-                    || this.gamePane.bird.y >= Column.Config.TOPHEIGHT + this.y + Column.Config.NOTCHHEIGHT
-                            - Bird.Config.HEIGHT) {
+            // 小鸟是否撞上柱子上部分
+            boolean dumpTop = this.gamePane.bird.y <= Column.Config.TOPHEIGHT + this.y;
+            // 小鸟通过缺口时，小鸟y值允许的最小值，即小鸟到达缺口下边缘时的小鸟y值
+            int birdMinY = Column.Config.TOPHEIGHT + this.y + Column.Config.NOTCHHEIGHT - Bird.Config.HEIGHT;
+            boolean dumpBottom = this.gamePane.bird.y >= birdMinY;
+            if (dumpTop || dumpBottom) {
                 this.gamePane.status = GamePane.Config.OVER;
             }
         }
