@@ -14,14 +14,17 @@ public class Ground {
     /**
      * 地面图片
      */
-    BufferedImage image;
+    public BufferedImage image;
 
     /**
      * 临时图片，该图片用于赋值给image
      */
-    BufferedImage imageTemp = Tool.loadImage("image/ground.png");
+    public BufferedImage imageTemp = Tool.loadImage("image/ground.png");
 
-    class Config {
+    /**
+     * 配置类
+     */
+    public class Config {
         /**
          * 每个循环单位移动的像素
          */

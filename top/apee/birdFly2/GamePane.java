@@ -11,29 +11,34 @@ public class GamePane extends JPanel {
     /**
      * 配置类
      */
-    class Config {
+    public class Config {
         /**
          * 每个循环单位的时间间隔
          */
         public static int loopTime = 15;
+        /**
+         * 游戏开始
+         */
+        public static final int START = 0;
+        /**
+         * 游戏进行中
+         */
+        public static final int RUNNING = 1;
+        /**
+         * 游戏结束
+         */
+        public static final int OVER = 2;
     }
 
     /**
-     * 游戏开始
-     */
-    public static final int START = 0;
-    /**
-     * 游戏进行中
-     */
-    public static final int RUNNING = 1;
-    /**
-     * 游戏结束
-     */
-    public static final int OVER = 2;
-    /**
      * 地面
      */
-    public Ground ground;
+    public Ground ground = new Ground();
+
+    /**
+     * 小鸟
+     */
+    public Bird bird = new Bird();
 
     /**
      * 游戏状态，开始、进行中、结束
@@ -41,7 +46,6 @@ public class GamePane extends JPanel {
     public int status = 0;
 
     public GamePane() {
-        ground = new Ground();
     }
 
     @Override
@@ -49,16 +53,21 @@ public class GamePane extends JPanel {
         super.paint(g);
         this.loadBackgroundImage(g);
         switch (this.status) {
-            case GamePane.START:
+            case GamePane.Config.START:
+                this.bird.show();
                 this.ground.show();
                 break;
-            case GamePane.RUNNING:
+            case GamePane.Config.RUNNING:
+                this.bird.show();
                 this.ground.show();
                 break;
-            case GamePane.OVER:
+            case GamePane.Config.OVER:
                 this.ground.remove();
                 break;
         }
+        // 绘制小鸟
+        g.drawImage(this.bird.image, this.bird.x, this.bird.y, null);
+        // 绘制地面
         g.drawImage(this.ground.image, this.ground.x, this.ground.y, null);
     }
 
