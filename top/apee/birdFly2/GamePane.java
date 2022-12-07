@@ -65,19 +65,29 @@ public class GamePane extends JPanel {
         this.ground.show();
         switch (this.status) {
             case GamePane.Config.START:
+                // 开始页面显示
                 this.startImage.show();
+                // 小鸟显示
                 this.bird.show();
+                // 小鸟运动方向向下
                 this.bird.dir = 1;
                 // 小鸟回到初始位置
                 this.bird.y = Bird.Config.Y;
+                // 地面移动
                 this.ground.move();
+                // 游戏结束页面隐藏
                 this.overPage.remove();
                 break;
             case GamePane.Config.RUNNING:
+                // 开始页面隐藏
                 this.startImage.remove();
+                // 小鸟显示
                 this.bird.show();
+                // 小鸟移动
                 this.bird.move();
+                // 地面移动
                 this.ground.move();
+                // 游戏结束页面隐藏
                 this.overPage.remove();
                 // 如果从最后一次点击屏幕开始，小鸟已经向上移动的距离超过了允许向上的距离，设置小鸟回落
                 if (this.bird.topNum >= Bird.Config.TOPALL) {
@@ -86,7 +96,9 @@ public class GamePane extends JPanel {
                 }
                 break;
             case GamePane.Config.OVER:
+                // 开始页面隐藏
                 this.startImage.remove();
+                // 游戏结束页面隐藏
                 this.overPage.show();
                 break;
         }
@@ -125,6 +137,9 @@ public class GamePane extends JPanel {
     }
 }
 
+/**
+ * 鼠标事件类
+ */
 class GamePaneMouse implements MouseListener {
 
     GamePane gamePane;
@@ -179,7 +194,7 @@ class GamePaneMouse implements MouseListener {
 }
 
 /**
- * 图片页面类
+ * 图片页面类，用于创建开始页面、结束页面
  */
 class Page {
     BufferedImage image;
