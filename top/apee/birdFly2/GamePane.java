@@ -51,11 +51,9 @@ public class GamePane extends JPanel {
         switch (this.status) {
             case GamePane.START:
                 this.ground.show();
-                this.ground.move();
                 break;
             case GamePane.RUNNING:
                 this.ground.show();
-                this.ground.move();
                 break;
             case GamePane.OVER:
                 this.ground.remove();

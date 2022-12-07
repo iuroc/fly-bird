@@ -16,6 +16,11 @@ public class Ground {
      */
     BufferedImage image;
 
+    /**
+     * 临时图片，该图片用于赋值给image
+     */
+    BufferedImage imageTemp = Tool.loadImage("image/ground.png");
+
     class Config {
         /**
          * 每个循环单位移动的像素
@@ -45,7 +50,8 @@ public class Ground {
      * 显示地面
      */
     public void show() {
-        this.image = Tool.loadImage("image/ground.png");
+        this.image = this.imageTemp;
+        this.move();
     }
 
     /**
