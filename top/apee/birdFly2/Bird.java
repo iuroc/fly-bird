@@ -14,8 +14,20 @@ public class Bird {
          * 小鸟尺寸
          */
         public static int width = 51, height = 48;
+        /**
+         * 每个循环单位移动的像素
+         */
+        public static int movePx = 3;
+        /**
+         * 从每次点击屏幕开始，小鸟允许向上移动的距离，超过后小鸟回落
+         */
+        public static int topAll = 20;
     }
 
+    /**
+     * 点击屏幕后，小鸟已经向上移动的距离
+     */
+    public int topNum = 0;
     /**
      * 小鸟位置
      */
@@ -70,5 +82,12 @@ public class Bird {
      */
     public void remove() {
         this.image = null;
+    }
+
+    /**
+     * 移动小鸟
+     */
+    public void move() {
+        this.y += Bird.Config.movePx;
     }
 }

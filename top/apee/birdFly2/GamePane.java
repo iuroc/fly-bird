@@ -55,20 +55,22 @@ public class GamePane extends JPanel {
         switch (this.status) {
             case GamePane.Config.START:
                 this.bird.show();
+                this.bird.move();
                 this.ground.show();
                 break;
             case GamePane.Config.RUNNING:
                 this.bird.show();
+                this.bird.move();
                 this.ground.show();
                 break;
             case GamePane.Config.OVER:
                 this.ground.remove();
                 break;
         }
-        // 绘制小鸟
-        g.drawImage(this.bird.image, this.bird.x, this.bird.y, null);
         // 绘制地面
         g.drawImage(this.ground.image, this.ground.x, this.ground.y, null);
+        // 绘制小鸟
+        g.drawImage(this.bird.image, this.bird.x, this.bird.y, null);
     }
 
     /**
