@@ -28,11 +28,11 @@ public class Ground {
         /**
          * 每个循环单位移动的像素
          */
-        public static int movePx = 1;
+        public static final int MOVEPX = 1;
         /**
          * 地面能够向左移动的极限位置，到达后地面将回到原点
          */
-        public static int minX = -363;
+        public static final int MINX = -363;
     }
 
     public Ground() {
@@ -43,8 +43,8 @@ public class Ground {
      * 移动地面
      */
     public void move() {
-        this.x -= Ground.Config.movePx;
-        if (x <= Ground.Config.minX) {
+        this.x -= Ground.Config.MOVEPX;
+        if (x <= Ground.Config.MINX) {
             this.x = 0;
         }
     }

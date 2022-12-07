@@ -15,7 +15,7 @@ public class GamePane extends JPanel {
         /**
          * 每个循环单位的时间间隔
          */
-        public static int loopTime = 15;
+        public static final int LOOPTIME = 15;
         /**
          * 游戏开始
          */
@@ -90,7 +90,7 @@ public class GamePane extends JPanel {
     public void startLoop() {
         while (true) {
             try {
-                Thread.sleep(GamePane.Config.loopTime);
+                Thread.sleep(GamePane.Config.LOOPTIME);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
