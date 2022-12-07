@@ -28,10 +28,31 @@ public class Column {
          * 柱子的间距
          */
         public static final int SPACING = 300;
+        /**
+         * 柱子的宽度
+         */
+        public static final int WIDTH = 76;
+        /**
+         * 柱子上部分高度
+         */
+        public static final int TOPHEIGHT = 525;
+        /**
+         * 柱子缺口高度
+         */
+        public static final int NOTCHHEIGHT = 78;
     }
 
-    public Column(int x) {
+    GamePane gamePane;
+
+    /**
+     * 初始化柱子
+     * 
+     * @param gamePane 游戏主体
+     * @param x        柱子初始x值
+     */
+    public Column(GamePane gamePane, int x) {
         this.x = x;
+        this.gamePane = gamePane;
     }
 
     /**
