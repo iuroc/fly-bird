@@ -46,7 +46,6 @@ public class GamePane extends JPanel {
     public int status = 0;
 
     public GamePane() {
-        // bird = new Bird(this);
     }
 
     @Override
