@@ -6,7 +6,7 @@ import javax.swing.JFrame;
  * 像素鸟游戏
  * 
  * @author 欧阳鹏
- * @author 2.0
+ * @version 2.0
  */
 public class Main {
     public static void main(String[] args) {
