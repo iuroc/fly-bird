@@ -1,10 +1,10 @@
-package top.apee.swingTest;
+package top.apee.photoSearch;
 
 import javax.swing.JFrame;
 
 public class Main {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("壁纸搜索");
+        JFrame frame = new JFrame("图片搜索工具");
         frame.setSize(400, 700);
         MainPane mainPane = new MainPane();
         frame.setContentPane(mainPane);

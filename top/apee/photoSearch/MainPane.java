@@ -1,4 +1,4 @@
-package top.apee.swingTest;
+package top.apee.photoSearch;
 
 import javax.swing.*;
 import java.awt.*;
